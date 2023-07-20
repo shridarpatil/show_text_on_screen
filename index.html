@@ -1,0 +1,57 @@
+ <html>
+     <head>
+        <title>Display text in center of screen </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <style type="text/css">
+            .center-screen {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                min-height: 90vh;
+                font-size:30vw
+            }
+        </style>
+        <script type="text/javascript">
+
+            function myFunction(){
+
+                document.getElementById('text').innerHTML = document.getElementById("myInput").value;
+                document.getElementById('myInput').style.display = 'none'
+                document.getElementById('submit').style.display = 'none'
+                document.getElementById('reset').style.display = 'inline'
+             }
+
+            function param() {
+                 // body...
+                 console.log("here")
+                 const urlParams = new URLSearchParams(window.location.search);
+                 console.log(urlParams)
+                const myParam = urlParams.get('text');
+                console.log(myParam)
+                if(myParam){
+                    document.getElementById('text').innerHTML = myParam
+                    document.getElementById('myInput').style.display = 'none'
+                    document.getElementById('submit').style.display = 'none'
+                    document.getElementById('reset').style.display = 'inline'
+                }
+            }
+
+            function reset() {
+                 // body...
+                 document.getElementById('myInput').style.display = 'inline'
+                 document.getElementById('submit').style.display = 'inline'
+                 document.getElementById('text').innerHTML = ''
+                 document.getElementById('reset').style.display = 'none'
+
+            }
+        </script>
+    </head>
+    <body onload="param()">
+        <input type="text" id="myInput">
+        <input type="button" id='submit' value="Submit" onclick="myFunction()">
+        <input type="button" id="reset" value="Reset" onclick="reset()" style="display: none;">
+        <div class="center-screen" id="text"></div>
+
+    </body>
+ </html>
